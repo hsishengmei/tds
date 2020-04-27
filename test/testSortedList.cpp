@@ -44,7 +44,7 @@ int main(int argc, char* argv[]) {
     printf("txsl size: %d\n", sl.size);
 
     // _debug = true;
-    auto v2 = genRandInt(nWorkload*nThreads,RANGE_MIN,RANGE_MAX);
+    auto v2 = genRandInt(nWorkload,RANGE_MIN,RANGE_MAX);
     // test
     double start = omp_get_wtime();
     int totalAborts = 0;
