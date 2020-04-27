@@ -7,7 +7,8 @@
 
 enum OP {
     INSERT,
-    REMOVE
+    REMOVE,
+    QREAD
 };
 
 struct nodeOp {

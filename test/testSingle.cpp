@@ -1,14 +1,20 @@
 #include <iostream>
 #include <random>
-#include "../src/TxSortedList.h"
+#include "../src/TX.h"
 #include "../src/Node.h"
 #include "omp.h"
 
+#include <thread>
+#include <chrono>
 #define RANGE_MIN 0
 #define RANGE_MAX 2147483647
 #define PREINSERT_SIZE 20000
 
 bool _debug = false;
+
+void sleep_microseconds(int n) {
+    std::this_thread::sleep_for(std::chrono::microseconds(n));
+}
 
 std::vector<int> genRandInt(int sz, int mn, int mx) {
     std::random_device rd;
@@ -33,6 +39,7 @@ int TxInsertSingleton(int i, TxSortedList& txsl) {
             done = true;
         }
         catch(const TxAbortException& e) {
+            sleep_microseconds(100);
             ++nAborts;
         }
     }
@@ -51,6 +58,7 @@ int TxRemoveSingleton(int i, TxSortedList& txsl) {
             done = true;
         }
         catch(const TxAbortException& e) {
+            sleep_microseconds(100);
             ++nAborts;
         }
     }
@@ -69,7 +77,7 @@ int TxReadSingleton(int i, TxSortedList& txsl) {
             done = true;
         }
         catch(const TxAbortException& e) {
-            // printf("abort\n");
+            sleep_microseconds(100);
             ++nAborts;
         }
     }
@@ -143,7 +151,7 @@ int main(int argc, char* argv[]) {
             }
             break;
         }       
-        #pragma omp atomic
+        #pragma omp critical
         totalAborts += abortCount;
     }
     double elapsedTime = omp_get_wtime() - start;
