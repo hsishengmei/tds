@@ -87,7 +87,7 @@ int TxReadSingleton(int i, TxSortedList& txsl) {
 int main(int argc, char* argv[]) {
     if (argc < 4) {
         printf("usage: ./test [nThreads] [nWorkload] [WorkloadType]\n");
-        printf("WorkloadType: PURE_READ=0 PURE_INSERT=1 PURE_REMOVE=2 3READ1WRITE=3 5READ1WRITE=4\n");
+        printf("WorkloadType: PURE_READ=0 PURE_WRITE=1 MIXED=2\n");
         return 0; 
     }
     int nThreads = atoi(argv[1]);
@@ -123,30 +123,28 @@ int main(int argc, char* argv[]) {
             abortCount += TxReadSingleton(v2[i], txsl);   
             break;
         case 1:
-            abortCount += TxInsertSingleton(v2[i], txsl);   
-            break;
-        case 2:
-            abortCount += TxRemoveSingleton(v[i], txsl);   
-            break;
-        case 3:
-            switch (i % 4)
+            switch (i % 2)
             {
             case 0:
                 abortCount += TxInsertSingleton(v2[i], txsl);   
                 break;
             default:
-                abortCount += TxReadSingleton(v2[i], txsl);
+                abortCount += TxRemoveSingleton(v[i], txsl);
                 break;
             }
             break;
-        case 4:
-            switch (i % 6)
+        case 2:
+            switch (i % 4)
             {
             case 0:
+            case 2:
+                abortCount += TxReadSingleton(v2[i], txsl); 
+                break;
+            case 1:  
                 abortCount += TxInsertSingleton(v2[i], txsl);   
                 break;
             default:
-                abortCount += TxReadSingleton(v2[i], txsl);
+                abortCount += TxRemoveSingleton(v2[i], txsl);
                 break;
             }
             break;
@@ -156,8 +154,7 @@ int main(int argc, char* argv[]) {
     }
     double elapsedTime = omp_get_wtime() - start;
     printf("elapsed time: %lf seconds\n", elapsedTime);
-    // printf("nOps: %d\nnAborts: %d\n", nWorkload, totalAborts);
-    printf("abort rate: %lf\n", 1.0*totalAborts/nWorkload);
-    printf("throughput: %lf ops/seconds\n", 1.0*nWorkload/elapsedTime);
-    printf("txsl size: %d\n\n", txsl.size);
+    printf("done, txsl size: %d\n", txsl.size);
+    printf("abort rate: %lf%%\n", 100.0*totalAborts/nWorkload);
+    printf("throughput: %lf ops/seconds\n\n", 1.0*nWorkload/elapsedTime);
 }

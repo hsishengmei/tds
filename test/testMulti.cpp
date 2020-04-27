@@ -4,9 +4,9 @@
 #include "../src/Node.h"
 #include "omp.h"
 
-#define RANGE_MIN 0
-#define RANGE_MAX 2147483647
-#define PREINSERT_SIZE 20000
+#define RANGE_MIN 1
+#define RANGE_MAX 400000
+#define PREINSERT_SIZE 40000
 
 bool _debug = false;
 
@@ -21,42 +21,6 @@ std::vector<int> genRandInt(int sz, int mn, int mx) {
     return v;
 }
 
-int TxInsertMulti(std::vector<int> v, TxSortedList& txsl) {
-    bool done = false;
-    int nAborts = 0;
-    Transaction tx;
-    while (!done) {
-        try {
-            tx.TxBegin();
-            for (int i : v) txsl.insert(i, tx);
-            tx.TxCommit(txsl);
-            done = true;
-        }
-        catch(const TxAbortException& e) {
-            ++nAborts;
-        }
-    }
-    return nAborts;
-}
-
-int TxRemoveMulti(std::vector<int> v, TxSortedList& txsl) {
-    bool done = false;
-    int nAborts = 0;
-    Transaction tx;
-    while (!done) {
-        try {
-            tx.TxBegin();
-            for (int i : v) txsl.remove(i, tx);
-            tx.TxCommit(txsl);
-            done = true;
-        }
-        catch(const TxAbortException& e) {
-            ++nAborts;
-        }
-    }
-    return nAborts;
-}
-
 int TxReadMulti(std::vector<int> v, TxSortedList& txsl) {
     bool done = false;
     int nAborts = 0;
@@ -64,7 +28,7 @@ int TxReadMulti(std::vector<int> v, TxSortedList& txsl) {
     while (!done) {
         try {
             tx.TxBegin();
-            for (int i : v) txsl.find(i, tx);
+            for (int i=0; i<v.size(); ++i) txsl.find(v[i], tx);
             tx.TxCommit(txsl);
             done = true;
         }
@@ -76,15 +40,39 @@ int TxReadMulti(std::vector<int> v, TxSortedList& txsl) {
     return nAborts;
 }
 
-int TxMix(std::vector<int> v, TxSortedList& txsl) {
+int TxWriteMulti(std::vector<int> v, std::vector<int> v2, TxSortedList& txsl) {
     bool done = false;
     int nAborts = 0;
     Transaction tx;
     while (!done) {
         try {
             tx.TxBegin();
-            for (int i=0; i<v.size()-1; ++i) txsl.find(v[i], tx);
-            txsl.insert(v.back(), tx);
+            for (int i=0; i<v.size(); ++i) {
+                if (i%2 == 1) txsl.insert(v[i], tx);
+                else if (i%2 == 3) txsl.remove(v2[i], tx);
+                else txsl.find(v[i], tx);
+            }
+            tx.TxCommit(txsl);
+            done = true;
+        }
+        catch(const TxAbortException& e) {
+            ++nAborts;
+        }
+    }
+    return nAborts;
+}
+
+int TxMix(std::vector<int> v, std::vector<int> v2, TxSortedList& txsl) {
+    bool done = false;
+    int nAborts = 0;
+    Transaction tx;
+    while (!done) {
+        try {
+            tx.TxBegin();
+            for (int i=0; i<v.size(); ++i) {
+                if (i%2 == 0) txsl.insert(v[i], tx);
+                else txsl.remove(v2[i], tx);
+            }
             tx.TxCommit(txsl);
             done = true;
         }
@@ -132,19 +120,18 @@ int main(int argc, char* argv[]) {
         abortCount = 0;
         std::vector<int> todo; todo.reserve(n);
         for (int j=0; j<n; ++j) todo.push_back(v2[j]);
+        std::vector<int> todo2; todo2.reserve(n);
+        for (int j=0; j<n; ++j) todo2.push_back(v[j]);
         switch (WorkloadType)
         {
         case 0:  
             abortCount += TxReadMulti(todo, txsl);   
             break;
         case 1:
-            abortCount += TxInsertMulti(todo, txsl);   
+            abortCount += TxWriteMulti(todo, todo2, txsl);   
             break;
         case 2:
-            abortCount += TxRemoveMulti(todo, txsl);
-            break;
-        case 3:
-            abortCount += TxMix(todo, txsl);
+            abortCount += TxMix(todo, todo2, txsl);
             break;
         }       
         #pragma omp critical
