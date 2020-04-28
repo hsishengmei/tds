@@ -1,0 +1,7 @@
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 7.810206 seconds
+abort rate: 128.930000%
+throughput: 1280.375983 ops/seconds
+txsl size: 44989
+

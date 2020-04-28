@@ -1,0 +1,353 @@
+nThreads=1 nWorkload=10000 WorkloadType=0 TxSize=1
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 4.681846 seconds
+abort rate: 0.000000%
+throughput: 2135.909620 ops/seconds
+txsl size: 40000
+
+nThreads=1 nWorkload=10000 WorkloadType=0 TxSize=4
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 5.914406 seconds
+abort rate: 0.000000%
+throughput: 1690.787010 ops/seconds
+txsl size: 40000
+
+nThreads=1 nWorkload=10000 WorkloadType=0 TxSize=16
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 24.560398 seconds
+abort rate: 0.000000%
+throughput: 407.159530 ops/seconds
+txsl size: 40000
+
+nThreads=1 nWorkload=10000 WorkloadType=0 TxSize=64
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 17.696109 seconds
+abort rate: 0.000000%
+throughput: 565.095964 ops/seconds
+txsl size: 40000
+
+nThreads=1 nWorkload=10000 WorkloadType=1 TxSize=1
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 24.902766 seconds
+abort rate: 0.000000%
+throughput: 401.561815 ops/seconds
+txsl size: 40000
+
+nThreads=1 nWorkload=10000 WorkloadType=1 TxSize=4
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 12.743877 seconds
+abort rate: 0.000000%
+throughput: 784.690537 ops/seconds
+txsl size: 45000
+
+nThreads=1 nWorkload=10000 WorkloadType=1 TxSize=16
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 15.003826 seconds
+abort rate: 0.000000%
+throughput: 666.496682 ops/seconds
+txsl size: 45000
+
+nThreads=1 nWorkload=10000 WorkloadType=1 TxSize=64
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 16.889295 seconds
+abort rate: 0.000000%
+throughput: 592.091008 ops/seconds
+txsl size: 45024
+
+nThreads=1 nWorkload=10000 WorkloadType=2 TxSize=1
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 5.301955 seconds
+abort rate: 0.000000%
+throughput: 1886.096846 ops/seconds
+txsl size: 50000
+
+nThreads=1 nWorkload=10000 WorkloadType=2 TxSize=4
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 17.268416 seconds
+abort rate: 0.000000%
+throughput: 579.091912 ops/seconds
+txsl size: 44998
+
+nThreads=1 nWorkload=10000 WorkloadType=2 TxSize=16
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 19.959790 seconds
+abort rate: 0.000000%
+throughput: 501.007276 ops/seconds
+txsl size: 44990
+
+nThreads=1 nWorkload=10000 WorkloadType=2 TxSize=64
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 14.295791 seconds
+abort rate: 0.000000%
+throughput: 699.506579 ops/seconds
+txsl size: 44983
+
+nThreads=2 nWorkload=10000 WorkloadType=0 TxSize=1
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 0.578741 seconds
+abort rate: 0.000000%
+throughput: 17278.898811 ops/seconds
+txsl size: 40000
+
+nThreads=2 nWorkload=10000 WorkloadType=0 TxSize=4
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 4.809355 seconds
+abort rate: 0.000000%
+throughput: 2079.280852 ops/seconds
+txsl size: 40000
+
+nThreads=2 nWorkload=10000 WorkloadType=0 TxSize=16
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 14.509543 seconds
+abort rate: 0.000000%
+throughput: 689.201590 ops/seconds
+txsl size: 40000
+
+nThreads=2 nWorkload=10000 WorkloadType=0 TxSize=64
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 12.978675 seconds
+abort rate: 0.000000%
+throughput: 770.494656 ops/seconds
+txsl size: 40000
+
+nThreads=2 nWorkload=10000 WorkloadType=1 TxSize=1
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 4.139714 seconds
+abort rate: 0.000000%
+throughput: 2415.625863 ops/seconds
+txsl size: 40000
+
+nThreads=2 nWorkload=10000 WorkloadType=1 TxSize=4
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 11.719205 seconds
+abort rate: 22.730000%
+throughput: 853.300204 ops/seconds
+txsl size: 44968
+
+nThreads=2 nWorkload=10000 WorkloadType=1 TxSize=16
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 14.086610 seconds
+abort rate: 5.940000%
+throughput: 709.894014 ops/seconds
+txsl size: 44998
+
+nThreads=2 nWorkload=10000 WorkloadType=1 TxSize=64
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 13.341146 seconds
+abort rate: 1.370000%
+throughput: 749.560769 ops/seconds
+txsl size: 45024
+
+nThreads=2 nWorkload=10000 WorkloadType=2 TxSize=1
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 17.405219 seconds
+abort rate: 56.420000%
+throughput: 574.540327 ops/seconds
+txsl size: 49881
+
+nThreads=2 nWorkload=10000 WorkloadType=2 TxSize=4
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 4.846379 seconds
+abort rate: 22.900000%
+throughput: 2063.395993 ops/seconds
+txsl size: 44993
+
+nThreads=2 nWorkload=10000 WorkloadType=2 TxSize=16
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 15.512770 seconds
+abort rate: 5.310000%
+throughput: 644.630197 ops/seconds
+txsl size: 44989
+
+nThreads=2 nWorkload=10000 WorkloadType=2 TxSize=64
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 13.053671 seconds
+abort rate: 1.370000%
+throughput: 766.068010 ops/seconds
+txsl size: 44987
+
+nThreads=4 nWorkload=10000 WorkloadType=0 TxSize=1
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 4.389702 seconds
+abort rate: 0.000000%
+throughput: 2278.058740 ops/seconds
+txsl size: 40000
+
+nThreads=4 nWorkload=10000 WorkloadType=0 TxSize=4
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 5.503288 seconds
+abort rate: 0.000000%
+throughput: 1817.095545 ops/seconds
+txsl size: 40000
+
+nThreads=4 nWorkload=10000 WorkloadType=0 TxSize=16
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 5.416456 seconds
+abort rate: 0.000000%
+throughput: 1846.225642 ops/seconds
+txsl size: 40000
+
+nThreads=4 nWorkload=10000 WorkloadType=0 TxSize=64
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 4.732868 seconds
+abort rate: 0.000000%
+throughput: 2112.883555 ops/seconds
+txsl size: 40000
+
+nThreads=4 nWorkload=10000 WorkloadType=1 TxSize=1
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 9.112271 seconds
+abort rate: 0.000000%
+throughput: 1097.421301 ops/seconds
+txsl size: 40000
+
+nThreads=4 nWorkload=10000 WorkloadType=1 TxSize=4
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 15.675504 seconds
+abort rate: 53.280000%
+throughput: 637.938012 ops/seconds
+txsl size: 44987
+
+nThreads=4 nWorkload=10000 WorkloadType=1 TxSize=16
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 12.598963 seconds
+abort rate: 13.170000%
+throughput: 793.716093 ops/seconds
+txsl size: 44971
+
+nThreads=4 nWorkload=10000 WorkloadType=1 TxSize=64
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 12.518982 seconds
+abort rate: 3.440000%
+throughput: 798.786990 ops/seconds
+txsl size: 45024
+
+nThreads=4 nWorkload=10000 WorkloadType=2 TxSize=1
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 13.192645 seconds
+abort rate: 152.400000%
+throughput: 757.998133 ops/seconds
+txsl size: 49907
+
+nThreads=4 nWorkload=10000 WorkloadType=2 TxSize=4
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 18.967805 seconds
+abort rate: 52.930000%
+throughput: 527.209135 ops/seconds
+txsl size: 44964
+
+nThreads=4 nWorkload=10000 WorkloadType=2 TxSize=16
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 14.983713 seconds
+abort rate: 12.890000%
+throughput: 667.391310 ops/seconds
+txsl size: 44962
+
+nThreads=4 nWorkload=10000 WorkloadType=2 TxSize=64
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 10.235297 seconds
+abort rate: 3.460000%
+throughput: 977.011187 ops/seconds
+txsl size: 44977
+
+nThreads=8 nWorkload=10000 WorkloadType=0 TxSize=1
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 0.259740 seconds
+abort rate: 0.000000%
+throughput: 38500.068230 ops/seconds
+txsl size: 40000
+
+nThreads=8 nWorkload=10000 WorkloadType=0 TxSize=4
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 2.232564 seconds
+abort rate: 0.000000%
+throughput: 4479.155024 ops/seconds
+txsl size: 40000
+
+nThreads=8 nWorkload=10000 WorkloadType=0 TxSize=16
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 2.149289 seconds
+abort rate: 0.000000%
+throughput: 4652.701753 ops/seconds
+txsl size: 40000
+
+nThreads=8 nWorkload=10000 WorkloadType=0 TxSize=64
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 2.722693 seconds
+abort rate: 0.000000%
+throughput: 3672.833692 ops/seconds
+txsl size: 40000
+
+nThreads=8 nWorkload=10000 WorkloadType=1 TxSize=1
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 1.242410 seconds
+abort rate: 0.000000%
+throughput: 8048.872735 ops/seconds
+txsl size: 40000
+
+nThreads=8 nWorkload=10000 WorkloadType=1 TxSize=4
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 6.128944 seconds
+abort rate: 119.760000%
+throughput: 1631.602571 ops/seconds
+txsl size: 44956
+
+nThreads=8 nWorkload=10000 WorkloadType=1 TxSize=16
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 11.209833 seconds
+abort rate: 30.750000%
+throughput: 892.073987 ops/seconds
+txsl size: 44963
+
+nThreads=8 nWorkload=10000 WorkloadType=1 TxSize=64
+pre insert 40000 nodes
+done, txsl size: 40000
+elapsed time: 13.014136 seconds
+abort rate: 8.200000%
+throughput: 768.395202 ops/seconds
+txsl size: 45020
+
+nThreads=8 nWorkload=10000 WorkloadType=2 TxSize=1
