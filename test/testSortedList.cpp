@@ -5,9 +5,9 @@
 
 #include <random>
 
-#define RANGE_MIN 0
-#define RANGE_MAX 2147483647
-#define PREINSERT_SIZE 100000
+#define RANGE_MIN 1
+#define RANGE_MAX 400000
+#define PREINSERT_SIZE 40000
 
 bool _debug = false;
 
@@ -25,14 +25,13 @@ std::vector<int> genRandInt(int sz, int mn, int mx) {
 int main(int argc, char* argv[]) {
 
 
-    if (argc != 4) {
-        printf("usage: ./test [nThreads] [nWorkload] [WorkloadType]\n");
-        printf("WorkloadType: PURE_READ=0 PURE_INSERT=1 PURE_REMOVE=2 MIXED=3 \n");
+    if (argc != 3) {
+        printf("usage: ./test [nWorkload] [WorkloadType]\n");
+        printf("WorkloadType: PURE_READ=0 PURE_WRITE=1 MIXED=2\n");
         return 0; 
     }
-    int nThreads = atoi(argv[1]);
-    int nWorkload = atoi(argv[2]);
-    int WorkloadType = atoi(argv[3]);
+    int nWorkload = atoi(argv[1]);
+    int WorkloadType = atoi(argv[2]);
 
     SortedList<Node, int> sl;
     // pre insert some nodes
@@ -56,39 +55,20 @@ int main(int argc, char* argv[]) {
             sl.find(v2[i]);   
             break;
         case 1:
-            sl.insert(v2[i]);   
+            if (i%2) sl.insert(v2[i]); 
+            else sl.remove(v[i]);  
             break;
-        case 2:
-            sl.remove(v[i]);   
+        case 2: 
+            if (i%4==1) sl.insert(v2[i]); 
+            else if (i%4==3) sl.remove(v[i]); 
+            else sl.find(v2[i]);
             break;
-        case 3:
-            switch (i % 4)
-            {
-            case 0:
-                sl.insert(v2[i]); 
-                break;
-            default:
-                sl.find(v2[i]); 
-                break;
-            }
-        case 4:
-            switch (i % 6)
-            {
-            case 0:
-                sl.insert(v2[i]); 
-                break;
-            default:
-                sl.find(v2[i]); 
-                break;
-            }
         }       
         totalAborts += abortCount;
     }
 
     double elapsedTime = omp_get_wtime() - start;
     printf("elapsed time: %lf seconds\n", elapsedTime);
-    printf("nOps: %d\n nAborts: %d\n", nWorkload, totalAborts);
-    printf("abort rate: %lf\n", 1.0*totalAborts/nWorkload);
     printf("throughput: %lf ops/seconds\n", 1.0*nWorkload/elapsedTime);
     printf("txsl size: %d\n", sl.size);
 }
